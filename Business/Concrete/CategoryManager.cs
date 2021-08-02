@@ -16,7 +16,7 @@ namespace Business.Concrete
         {
             _categoryDal = categoryDal;
         }
-
+        
         public IDataResult<List<Category>> GetAll()
         {
             return new SuccessDataResult<List<Category>>(_categoryDal.GetAll());

@@ -15,13 +15,17 @@ namespace DataAccess.Concrete.EntityFramework
             optionsBuilder.UseSqlServer("Data Source=DESKTOP-VH5VO8P;Initial Catalog=ProductManagerApp;Integrated Security=True;");
         }
 
-        public DbSet<Product> Product { get; set; }
-        public DbSet<Category> Category { get; set; }
-        public DbSet<Customer> Customer { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Brand> Brands { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Order> Orders { get; set; }
 
         public DbSet<OperationClaim> OperationClaims { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<UserOperationClaim> UserOperationClaims { get; set; }
+
+
+        
     }
 }

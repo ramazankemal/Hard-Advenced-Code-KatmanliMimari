@@ -10,6 +10,7 @@ namespace Entities.DTOs
         public int ID { get; set; }
         public string Name { get; set; }
         public string CategoryName { get; set; }
+        public string BrandName { get; set; }
         public short UnitsInStock { get; set; }
 
 

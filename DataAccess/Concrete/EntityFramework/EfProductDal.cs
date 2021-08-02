@@ -17,14 +17,18 @@ namespace DataAccess.Concrete.EntityFramework
         {
             using (SqlServerContext contex=new SqlServerContext())
             {
-                var result = from p in contex.Product
-                             join c in contex.Category
+
+                var result = from p in contex.Products
+                             join c in contex.Categories     
                              on p.CategoryId equals c.ID
+                             join b in contex.Brands    
+                             on p.BrandId equals b.ID
                              select new ProductDetailDto 
                              {
                                  ID=p.ID,
                                  Name=p.Name,
                                  CategoryName=c.Name,
+                                 BrandName=b.Name,
                                  UnitsInStock=p.UnitsInStock 
                              };
                 return result.ToList();
