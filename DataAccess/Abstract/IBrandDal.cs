@@ -9,6 +9,6 @@ namespace DataAccess.Abstract
 {
     public interface IBrandDal:IEntityRepository<Brand>
     {
-        List<ProductCountOfBrand> GetAllProductCountOfBrand();
+        List<ProductCountOfBrandDto> GetAllProductCountOfBrand();
     }
 }

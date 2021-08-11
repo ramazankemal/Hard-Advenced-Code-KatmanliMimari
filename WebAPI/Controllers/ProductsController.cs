@@ -69,6 +69,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getbybrand")]
+        public IActionResult GetByBrand(int brandId)
+        {
+            var result = _productService.GetAllByBrandId(brandId);
+            if (result.Success)
+                return Ok(result);
+
+            return BadRequest(result);
+        }
+
 
         [HttpGet("getproductdetails")]
         public IActionResult GetProductDetails(int categoryId)
@@ -80,8 +90,16 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
+        [HttpGet("getrecommendedproducts")]
+        public IActionResult GetRecommendedProducts()
+        {
+            var result = _productService.GetRecommendedProducts();
+            if(result.Success)
+                return Ok(result);
 
-
+            return BadRequest(result);
+            
+        }
 
     }
 }

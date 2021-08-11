@@ -8,6 +8,6 @@ namespace Business.Abstract
 {
     public interface IBrandService
     {
-        IDataResult<List<ProductCountOfBrand>> GetAllProductCountOfBrand();
+        IDataResult<List<ProductCountOfBrandDto>> GetAllProductCountOfBrand();
     }
 }

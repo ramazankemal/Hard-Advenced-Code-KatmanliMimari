@@ -5,8 +5,9 @@ using System.Text;
 
 namespace Entities.DTOs
 {
-    public class ProductCountOfBrand:IDto
+    public class ProductCountOfBrandDto:IDto
     {
+        public int BrandId { get; set; }
         public string Name { get; set; }
         public int ProductCount { get; set; }
     }

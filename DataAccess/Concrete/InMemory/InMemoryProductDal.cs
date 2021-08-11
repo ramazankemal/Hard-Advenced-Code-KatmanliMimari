@@ -48,7 +48,7 @@ namespace DataAccess.Concrete.InMemory
         public List<ProductDetailDto> GetProductDetails()
         {
             throw new NotImplementedException();
-        }
+        }    
 
         public void Update(Product product)
         {

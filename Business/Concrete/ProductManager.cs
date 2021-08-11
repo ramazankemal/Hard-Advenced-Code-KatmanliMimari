@@ -91,6 +91,11 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
+        public IDataResult<List<Product>> GetRecommendedProducts()
+        {
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.Recommended==true));
+        }
+
         private IResult CheckIfProductCountOfCategoryCorrect(int categoryId)
         {
             var result = _productDal.GetAll(p => p.CategoryId == categoryId).Count;
@@ -129,6 +134,10 @@ namespace Business.Concrete
             throw new NotImplementedException();
         }
 
-      
+        public IDataResult<List<Product>> GetAllByBrandId(int id)
+        {    
+            return new SuccessDataResult<List<Product>>(_productDal.GetAll(p => p.BrandId == id), Messages.ProductListed);
+            
+        }
     }
 }

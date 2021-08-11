@@ -17,9 +17,9 @@ namespace Business.Concrete
             _brandDal = brandDal;
         }
 
-        public IDataResult<List<ProductCountOfBrand>> GetAllProductCountOfBrand()
+        public IDataResult<List<ProductCountOfBrandDto>> GetAllProductCountOfBrand()
         {
-            return new SuccessDataResult<List<ProductCountOfBrand>>(_brandDal.GetAllProductCountOfBrand());
+            return new SuccessDataResult<List<ProductCountOfBrandDto>>(_brandDal.GetAllProductCountOfBrand());
         }
     }
 }
