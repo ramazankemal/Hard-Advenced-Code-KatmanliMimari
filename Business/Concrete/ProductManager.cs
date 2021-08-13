@@ -79,9 +79,9 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Product>>(_productDal.GetAll(p=>p.UnitPrice>=min && p.UnitPrice<=max));
         }
 
-        public IDataResult<List<ProductDetailDto>> GetProductDetails()
+        public IDataResult<ProductDetailDto> GetProductDetails(int id)
         {
-            return new SuccessDataResult<List<ProductDetailDto>>(_productDal.GetProductDetails());
+            return new SuccessDataResult<ProductDetailDto>(_productDal.GetProductDetails(id));
         }
 
         [ValidationAspect(typeof(ProductValidator))]

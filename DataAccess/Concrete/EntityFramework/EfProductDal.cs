@@ -13,25 +13,42 @@ namespace DataAccess.Concrete.EntityFramework
 {
     public class EfProductDal : EfEntityRepositoryBase<Product, SqlServerContext>, IProductDal
     {
-        public List<ProductDetailDto> GetProductDetails()
+        public ProductDetailDto GetProductDetails(int id)
         {
             using (SqlServerContext contex=new SqlServerContext())
             {
 
                 var result = from p in contex.Products
-                             join c in contex.Categories     
+                             join c in contex.Categories
                              on p.CategoryId equals c.ID
-                             join b in contex.Brands    
+                             join b in contex.Brands
                              on p.BrandId equals b.ID
-                             select new ProductDetailDto 
+                             where p.ID == id
+                             select new ProductDetailDto
                              {
-                                 ID=p.ID,
-                                 Name=p.Name,
-                                 CategoryName=c.Name,
-                                 BrandName=b.Name,
-                                 UnitsInStock=p.UnitsInStock 
+                                 ID = p.ID,
+                                 Name = p.Name,
+                                 CateogryId = c.ID,
+                                 CategoryName = c.Name,
+                                 BrandId = b.ID,
+                                 BrandName = b.Name,
+                                 WebId = p.WebId,
+                                 Description = p.Description,
+                                 UnitsInStock = p.UnitsInStock,
+                                 UnitPrice = p.UnitPrice,
+                                 ImagePath = p.ImagePath,
+                                 Recommended = p.Recommended,
+                                 Images = (from i in contex.ProductImages
+                                          where i.ProductId == id
+                                          select new ProductImage
+                                          {
+                                              ID=i.ID,
+                                              ProductId=i.ProductId,
+                                              ImagePath=i.ImagePath
+                                          }).ToList()
+                               
                              };
-                return result.ToList();
+                return result.FirstOrDefault();
             } 
         }
     }
